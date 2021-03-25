@@ -1,3 +1,5 @@
+/*class
+
 class Person{
   constructor(name,age){
     this. name=name;
@@ -7,12 +9,11 @@ class Person{
     console.log(this.name+""+this.age)
   }
 }
-
 const person = new Person('morty',23);
 person.getPersonMsg();
-// console.log(person)
-//promise 
+*/
 
+/*promist
 let myFirstPromise  = new Promise(
   (resolve,reject)=>{
     setTimeout(() => {
@@ -30,8 +31,23 @@ let myFirstPromise  = new Promise(
     console.log(err)
   }
 )
+*/
 
-// myFirstPromise.then((result)=>{
-//   console.log(result);
-//   console.log("promise successful");
-// })
+
+function after2Second(){
+  return new Promise(
+    (resolve,reject)=>{
+      setTimeout(() => {
+        console.log("past 1s");
+        resolve('mordy');
+        // reject('failq')
+      }, 2000);}
+  )
+}
+
+async function asyncCall(){
+  console.log("call");
+  const result = await after2Second();
+  console.log(result);
+}
+asyncCall();

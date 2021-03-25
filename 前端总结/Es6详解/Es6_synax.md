@@ -1,7 +1,7 @@
 ## es6语法详解
 **1 let** 
 
- 使用let 声明的变量只在代码块中有效
+ 使用let 声明的变量只在代码块中有效,没有变量提升
 
 **2 const**
 
@@ -20,16 +20,79 @@ For(let item of arrays){
 **3 Class**
 
 class 类是js对象的模版可以创建构造函数和方法
-···
-Class person(){
-  construct(name,age,sex){
-    this.name = name;
+```
+class Person{
+  constructor(name,age){
+    this. name=name;
     this.age = age;
-    this.sex = sex
   }
-  
   getPersonMsg(){
-    console.log(this)
+    console.log(this.name+""+this.age)
   }
 }
-···
+```
+
+**4 promise**
+
+promise 回调函数，一般用于ajax之类的异步请求实现,promise 函数输入一个函数入参，带有两个对象resolve，reject,当执行成功的时候使用resolve传递数据，失败的时候使用reject 传递数据,当promise执行成功后执行then(result)函数，里面返回成功后reject 传递的信息，失败执行catch函数
+```
+let myFirstPromise  = new Promise(
+  (resolve,reject)=>{
+    setTimeout(() => {
+      console.log("past 1s");
+      resolve('success');
+      reject('fail')
+      
+    }, 2000);
+  }
+).then((result)=>{
+    console.log(result);
+    console.log("promise successful");
+}).catch(
+  err=>{
+    console.log(err)
+  }
+)
+```
+
+**5 async(异步)**
+
+用async和await修饰函数和异步函数可以更直接的调用promise函数，不需要通过then之类的等待
+
+````
+function after2Second(){
+  return new Promise(
+    (resolve,reject)=>{
+      setTimeout(() => {
+        console.log("past 1s");
+        resolve('mordy');
+        // reject('failq')
+      }, 2000);}
+  )
+}
+
+async function asyncCall(){
+  console.log("call");
+  const result = await after2Second();
+  console.log(result);
+}
+asyncCall();
+````
+
+
+
+
+**6 解构**
+
+这个可以这么用，允许一个函数传入多个函数 function add(...args){
+```
+For(let item of args){
+}
+}
+Let x = sum(,1,1,1,1,1,)
+```
+
+**set**
+
+新增set对象，特性它的值是唯一的，也可以使用迭代器遍历这个对象
+
