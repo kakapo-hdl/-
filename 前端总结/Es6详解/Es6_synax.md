@@ -92,7 +92,21 @@ For(let item of args){
 Let x = sum(,1,1,1,1,1,)
 ```
 
-**set**
+**7 set**
 
 新增set对象，特性它的值是唯一的，也可以使用迭代器遍历这个对象
+剩下的api 详见官网
 
+**7 Generator**
+没太懂 应该不怎么用,大概就是用generator function生成,yieid(产量)返回结果
+
+code
+```
+function* infinite(){
+  let index = 0;
+  yield = index++;
+}
+
+const generator = infinite();
+console.log(generator.next().value);
+```
