@@ -33,7 +33,7 @@ let myFirstPromise  = new Promise(
 )
 */
 
-
+ 
 function after2Second(){
   return new Promise(
     (resolve,reject)=>{
